@@ -1,0 +1,55 @@
+.aboutPage {
+  background-image: linear-gradient(to bottom, #178c2a, #1f752e, #245e2f, #27482d, #273229);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.container1 {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  box-shadow: 0px 2px 16px 2px rgb(51, 0, 0);
+  margin: auto;
+  width: 400px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.466);
+}
+
+.principal {
+  font-size: 22px;
+  font-weight: 800;
+  font-style: oblique;
+  font-family: "Times New Roman", Times, serif;
+  color: rgb(129, 80, 80);
+  padding-top: 20px;
+}
+
+hr {
+  border: 1px solid #178c2a;
+  margin-bottom: 20px;
+}
+
+.principal .name {
+  font-size: 22px;
+  font-weight: 800;
+  font-style: oblique;
+  font-family: "Times New Roman", Times, serif;
+  color: rgb(168, 0, 0);
+}
+
+span {
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 800;
+  color: rgb(32, 32, 32);
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+p {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color:rgb(129, 80, 80);
+  font-weight: 600;
+}
