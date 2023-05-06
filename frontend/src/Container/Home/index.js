@@ -55,9 +55,10 @@ const HomePage = () => {
                 You can watch it now <span className="free">for free!</span>
               </h4>
             </section>
-            <div className="hr_container">
+            {/* <div className="hr_container">
               <hr />
-            </div>
+            </div> */}
+            <div className="space"></div>
           </Col>
           <SearchBar handleSearch={handleSearch} />
           {movies && movies.length > 0 ? (

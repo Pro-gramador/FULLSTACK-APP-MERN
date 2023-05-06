@@ -87,7 +87,7 @@ const MoviesContainer = () => {
                       />
                     );
                   })
-                : "Loading Content, Please Wait"}
+                : <p style={{ maxHeight: "100vh" }}>Loading Content, Please Wait...</p>}
 
               {paginationNum && paginationNum > 1 ? (
                 <PaginationBar

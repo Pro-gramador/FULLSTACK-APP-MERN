@@ -64,6 +64,10 @@ body {
  box-shadow: 1px 0 0 1px #53a510;
 }
 
+.space {
+  margin: 90px;
+}
+
 /* aqui estilizo las cartas */
 /* VIDEO THUMB */
 

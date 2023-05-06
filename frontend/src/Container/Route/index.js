@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, redirect} from "react-router-dom";
+import { useState } from "react";
 
 import HomePage from "../Home/index";
 import AboutPage from "../About/index";
@@ -13,23 +14,26 @@ import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 
 
+
 const RouterComponent = () => {
+  const [ isLogged, setIsLogged] = useState(false);
+
   return (
     <>
       <BrowserRouter>
         <Header />
           <Routes>
 
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage /> } />
           <Route path='/about' element={<AboutPage />} />
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/series" element={<SeriesPage />} />
           <Route path="/details/:movieid/:mediatype" element={<DetailsPage />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
-          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/profile/:userId" element={<UserProfile  />} />
 
-          </Routes>
+        </Routes>
         <Footer />
       </BrowserRouter>
     </>

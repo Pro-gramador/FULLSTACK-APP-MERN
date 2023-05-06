@@ -12,10 +12,10 @@ const login = (req, res) => {
 
     bcrypt.compare(password, user.password).then((isMatch) => {
       if (isMatch) {
-        const { name, email } = user;
-        const token = jwt.sign({ email }, process.env.TOKEN_SECRET, { expiresIn:"24h" });
+        const { name, email, _id: id } = user;
+        const token = jwt.sign({ id }, process.env.TOKEN_SECRET, { expiresIn:"1h" });
 
-        return res.status(200).json({ status: "OK", user: { name, email }, token: token });
+        return res.status(200).json({ message: "OK", user: { name, email, id }, token });
       } else {
         return res.status(500).json({ message: "Incorrect Password" });
       }

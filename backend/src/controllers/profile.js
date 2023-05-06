@@ -1,20 +1,20 @@
 const User = require("../models/User");
 
-const getUserById = (req, res) => {
+const profile = (req, res) => {
   const { userId } = req.params;
 
-  if (userId.length === 24) {
-    User.findById(userId).then((user) => {
+  User.findById(userId)
+    .then((user) => {
       if (!user) {
-        return res.json({ message: "User not found" });
-      } else {
-        const { _id, password, __v, ...rest } = user._doc;
-        res.json(rest);
+        return res.status(404).json({ message: "User not found" });
       }
-    });
-  } else {
-    return res.json({ message: "Invalid credentials" });
-  }
+
+      return res.status(200).json({ message: "OK", user: user});
+    })
+    .catch((error) => {
+      console.log(error);
+      return res.status(500).json({ message: "Server error" });
+    }); 
 };
 
-module.exports = getUserById;
+module.exports = profile;

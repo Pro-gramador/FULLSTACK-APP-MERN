@@ -25,20 +25,18 @@ const register = async (req, res) => {
               name,
               email,
               password: hashedPassword,
-              id,
             });
 
             newUser.save().then((user) => {
               const token = jwt.sign(
                 {
-                  id: user.id,
+                  id: user._id,
                 },
                 process.env.TOKEN_SECRET,
                 {
-                  expiresIn: "24h",
+                  expiresIn: "1h",
                 }
               );
-
               return res.status(200).json({ message: "OK", user: user, token: token });
             });
           }
@@ -46,7 +44,7 @@ const register = async (req, res) => {
       }
     })
     .catch((err) => {
-      res.json({ message: "Something went wrong", err: err });
+      res.json({ message: "Something went wrong", error: err });
     });
 };
 

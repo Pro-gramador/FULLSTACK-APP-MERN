@@ -1,65 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import UserProfile from "./UserProfile";
 import Styles from "./loginForm.module.css";
 
+
 const LoginForm = () => {
-  const [usuario, setUsuario] = useState(null); // cambia el valor inicial a null
-  // eslint-disable-next-line no-unused-vars
-  const [token, setToken] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
+    const [ user, setUser ] = useState(null);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
-  const HandleSubmit = async (e) => {
-    e.preventDefault();
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await axios.post("http://localhost:4000/login", {
+          email,
+          password,
+        })
+        
+        setUser(response.data);
+        localStorage.setItem("user", response.data.user);
+        localStorage.setItem("token", response.data.token);
+        if (user) {
+          console.log(user);
+        }
+        // redirigir al usuario a su perfil
+        navigate(`/profile/${response.data.user.id}`);
+      } catch (error) {
+        setError(error.response.data.message);
+      }
+    };
 
-    try {
-      const response = await axios.post("http://localhost:4000/login", {
-        email,
-        password,
-      });
+    useEffect(() => {
+      handleSubmit();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
-      localStorage.setItem("user", JSON.stringify(response.data.user));
-      localStorage.setItem("token", response.data.token);
-      setUsuario(response.data.user);
-      setToken(response.data.token);
-      navigate("/profile");
-    } catch (error) {
-      setError(error.response.data.message);
-    }
-  };
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    const user = localStorage.getItem("user");
-    if (token && user) {
-      setUsuario(JSON.parse(user));
-      setToken(token);
-    }
-  }, []);
-
-  const HandleLogout = (e) => {
-    e.preventDefault();
-
-    localStorage.clear();
-    setUsuario(null);
-    setToken("");
-    // console.log(usuario);
-    navigate("/");
-  };
-
+  
   return (
     <div>
-      {usuario ? (
-        <UserProfile user={usuario} onClick={HandleLogout} />
-      ) : (
         <div className={Styles.body}>
           <div className={Styles.loginContainer}>
             <h1 className={Styles.h1}>Login</h1>
-            <form onSubmit={HandleSubmit}>
+            <form onSubmit={handleSubmit}>
               <div>
                 <label className={Styles.labels}>Email:</label>
                 <br />
@@ -100,7 +84,6 @@ const LoginForm = () => {
             </form>
           </div>
         </div>
-      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Styles from "./Register.module.css";
@@ -7,10 +7,10 @@ const RegisterForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
-  const navigate = useNavigate(); 
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const HandleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -19,31 +19,23 @@ const RegisterForm = () => {
         email,
         password,
       });
-      const { user, token } = response.data;
 
-      //Guarda el user en el localstorage
-      localStorage.setItem("user", JSON.stringify({ user }));
-      localStorage.setItem("token", token);
-
-      //--dirige a login
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("token", response.data.token);
+      // redirigir al usuario a la página de perfil después del registro exitoso
+      const token = localStorage.getItem("token");
+      console.log("registrado!", token);
       navigate('/login');
-
     } catch (error) {
       setError(error.response.data.message);
     }
   };
 
-  useEffect(() => {
-    setError('');
-    HandleSubmit();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [name,email,password]);
-
   return (
     <div className={Styles.body}>
       <div className={Styles.form}>
         <h1>Register</h1>
-        <form onSubmit={HandleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div>
             <label className={Styles.labels}>Username:</label>
             <br />
