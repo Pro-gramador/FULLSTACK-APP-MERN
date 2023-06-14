@@ -4,7 +4,6 @@ const dotenv = require("dotenv");
 const database = require("./database/index");
 const controllers = require("../src/controllers");
 const bodyParser = require("body-parser");
-
 const app = express();
 
 //middlewares
@@ -13,10 +12,10 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//routess
+//routes
 app.post("/register", controllers.register);
 app.post("/login", controllers.login);
-app.get("/profile/:userId", controllers.profile);
+app.get("/profile/:name", controllers.profile);
 
 
 //port settings)

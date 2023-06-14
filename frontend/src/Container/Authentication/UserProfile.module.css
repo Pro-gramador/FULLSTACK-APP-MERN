@@ -1,0 +1,153 @@
+.container {
+  background: rgba(211, 211, 211, 0.2);
+  display: flex;
+  min-height: 100vh;
+}
+
+.userInfo {
+  display: block;
+  width: 100%;
+  height: 80%;
+  text-align: center;
+  background: #0c0c0c;
+  margin-top: 20px;
+  padding: 40px;
+}
+
+.userInfo p {
+  color: rgb(241, 210, 210);
+  font-size: 20px;
+  padding-top: 10px;
+}
+
+.userInfo .name {
+  font-size: 25px;
+  color: rgb(29, 207, 29);
+  text-decoration: underline;
+}
+
+.userInfo .email {
+  margin-bottom: 40px;
+}
+
+.userPicture img {
+  width: 100px;
+  padding-bottom: 20px;
+}
+
+.listSection {
+  background-color: rgb(194, 177, 177, 0.5);
+  border-radius: 10px;
+  width: 650px;
+  max-width: 100vh;
+  height: 270px;
+  margin: auto;
+  
+}
+
+.adventages {
+  display: flex;
+  color: rgb(255, 255, 255);
+  text-align: left;
+  padding: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 600;
+}
+
+.listSection h4 {
+  text-align: left;
+  padding-left: 40px;
+  padding-bottom: 30px;
+  font-size: 17px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: rgb(255, 255, 255);
+  margin-bottom: 0px;
+}
+
+.list {
+  display: flex;
+  background-color: rgba(192, 176, 176, 0.5);
+  width: 600px;
+  height: 93px;
+  margin: auto;
+  border-radius: 8px;
+}
+
+.list .listColumn1 {
+  text-align: left;
+  color: rgb(255, 255, 255);
+  padding: 8px 22px;
+  font-weight: 600;
+  font-size: 13px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.list .listColumn2 {
+  text-align: left;
+  color: rgb(255, 255, 255);
+  padding: 8px 22px;
+  font-weight: 600;
+  font-size: 13px;
+  padding-left: 90px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.logoutbutton {
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoutbutton button {
+  width: 100px;
+  font-weight: 800;
+}
+
+@media screen and (max-width: 768px) {
+    .userInfo {
+      height: auto;
+      padding: 20px;
+    }
+  
+    .userInfo p {
+      font-size: 16px;
+    }
+  
+    .userInfo .name {
+      font-size: 20px;
+    }
+  
+    .listSection {
+      width: 100%;
+      height: auto;
+    }
+  
+    .list {
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+    }
+  
+    .list .listColumn1,
+    .list .listColumn2 {
+      padding: 8px;
+      font-size: 12px;
+    }
+  }
+    
+  @media screen and (max-width: 480px) {
+    .userInfo {
+      padding: 10px;
+    }
+  
+    .userInfo p {
+      font-size: 14px;
+    }
+  
+    .userInfo .name {
+      font-size: 18px;
+    }
+  }

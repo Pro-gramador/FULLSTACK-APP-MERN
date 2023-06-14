@@ -1,15 +1,15 @@
 const User = require("../models/User");
 
 const profile = (req, res) => {
-  const { userId } = req.params;
+  const { name } = req.params;
 
-  User.findById(userId)
+  User.find({ name })
     .then((user) => {
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }
 
-      return res.status(200).json({ message: "OK", user: user});
+      return res.status(200).json({ message: "OK", user: user });
     })
     .catch((error) => {
       console.log(error);

@@ -20,9 +20,11 @@ const RegisterForm = () => {
         password,
       });
 
-      localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("user", response.data.user);
       localStorage.setItem("token", response.data.token);
-      // redirigir al usuario a la página de perfil después del registro exitoso
+      localStorage.setItem("name", response.data.user.name);
+
+      // redirigir al usuario a la página de login después del registro exitoso
       const token = localStorage.getItem("token");
       console.log("registrado!", token);
       navigate('/login');

@@ -15,7 +15,7 @@ const login = (req, res) => {
         const { name, email, _id: id } = user;
         const token = jwt.sign({ id }, process.env.TOKEN_SECRET, { expiresIn:"1h" });
 
-        return res.status(200).json({ message: "OK", user: { name, email, id }, token });
+        return res.status(200).json({ message: "OK", user: { name, email, id}, token });
       } else {
         return res.status(500).json({ message: "Incorrect Password" });
       }
